@@ -1,0 +1,17 @@
+<krpano>
+  <plugin name="intro" keep="true"
+          url="intro.js"
+          auto_show="true"
+          />
+
+  <action name="toggle_intro">
+    if(plugin[intro].visible,
+      set(plugin[intro].visible, false);
+      plugin[btn_intro].toggle(false);
+    ,
+      set(plugin[intro].visible, true);
+      plugin[btn_intro].toggle(true);
+      set(plugin[intro].alpha, 1);
+    );
+  </action>
+</krpano>

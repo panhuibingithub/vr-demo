@@ -1,0 +1,6 @@
+<krpano>
+  <action name="loadimage">
+    plugin[imageslider].loadcontent(%1);
+    set(plugin[imageslider].visible, true);
+  </action>
+</krpano>

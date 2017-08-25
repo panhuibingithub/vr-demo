@@ -1,0 +1,6 @@
+<krpano>
+  <action name="load_tbcontent">
+    set(plugin[tbcontent].visible, true);
+    plugin[tbcontent].loadtbcontent(%1);
+  </action>
+</krpano>

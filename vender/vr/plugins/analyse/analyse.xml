@@ -1,0 +1,114 @@
+<krpano onstart="ca_startup();">
+  <action name="ca_startup" type="Javascript"><![CDATA[
+    loadjs("../../../lib/pano-player/analyse.min.js");
+  ]]></action>
+
+  <action name="ca_toggle_scenebar" type="javascript"><![CDATA[
+    (function(){
+      if(!window['sp']) { return; }
+      if(!window['sp']['dc']) { return; }
+      if(krpano.get('plugin[scenes_bar].visible')) {
+        sp.dc.send('scenebar', {category: 'scenebar', action: 'open'});
+      }
+      else {
+        sp.dc.send('scenebar', {category: 'scenebar', action: 'close'});
+      }
+    })();
+  ]]></action>
+
+  <action name="ca_loadscene" type="javascript"><![CDATA[
+    (function(){
+      if(!window['sp']) { return; }
+      if(!window['sp']['dc']) { return; }
+      sp.dc.send('scenechange', {category: 'scenechange', action: 'scenebar', label: args[1], values: {sceneId: args[1], sceneName: args[2]}});
+    })();
+  ]]></action>
+
+  <action name="ca_toggle_gyro">
+    if(plugin[skin_gyro].enabled,
+      jscall(if(sp){sp.dc.send('gyro', {category: 'gyro', action: 'open'})});
+      ,
+      jscall(if(sp){sp.dc.send('gyro', {category: 'gyro', action: 'close'})});
+    );
+  </action>
+
+  <action name="ca_toggle_webvr">
+    if(webvr.isenabled,
+      jscall(if(sp){sp.dc.send('webvr', {category: 'webvr', action: 'open'})});
+      ,
+      jscall(if(sp){sp.dc.send('webvr', {category: 'webvr', action: 'close'})});
+    );
+  </action>
+
+  <action name="ca_toggle_sandtable" type="javascript"><![CDATA[
+    (function(){
+      if(!window['sp']) { return; }
+      if(!window['sp']['dc']) { return; }
+
+      if(krpano.get('plugin[sandtable].visible')) {
+        sp.dc.send('sandtable', {category: 'sandtable', action: 'open', label: krpano.get('scene[get(xml.scene)].title')});
+      }
+      else {
+        sp.dc.send('sandtable', {category: 'sandtable', action: 'close', label: krpano.get('scene[get(xml.scene)].title')});
+      }
+    })();
+  ]]></action>
+
+  <action name="ca_toggle_audio" type="javascript">
+    (function(){
+      if(!window['sp']) { return; }
+      if(!window['sp']['dc']) { return; }
+      sp.dc.send('bgm', {category: args[1], action: args[2], label: krpano.get('scene[get(xml.scene)].title')});
+    })();
+  </action>
+
+  <action name="ca_toggle_tel" type="javascript">
+    (function(){
+      if(!window['sp']) { return; }
+      if(!window['sp']['dc']) { return; }
+      sp.dc.send('tel', {category: 'tel', action: args[1]});
+    })();
+  </action>
+
+  <action name="ca_toggle_location" type="javascript">
+    (function(){
+      console.log('ca toggle location');
+      console.log(krpano.get('$panoid'));
+      if(!window['sp']) { return; }
+      if(!window['sp']['dc']) { return; }
+      sp.dc.send('location', {category: 'location', action: args[1]});
+    })();
+  </action>
+
+  <action name="ca_toggle_link" type="javascript">
+    (function(){
+      if(!window['sp']) { return; }
+      if(!window['sp']['dc']) { return; }
+      sp.dc.send('link', {category: 'link', action: args[1]});
+    })();
+  </action>
+
+  <action name="ca_toggle_info" type="javascript">
+    (function(){
+      if(!window['sp']) { return; }
+      if(!window['sp']['dc']) { return; }
+      sp.dc.send('info', {category: 'info', action: args[1]});
+    })();
+  </action>
+
+  <action name="ca_toggle_hidectrls" type="javascript">
+    (function(){
+      if(!window['sp']) { return; }
+      if(!window['sp']['dc']) { return; }
+      sp.dc.send('hide_controls', {category: 'hide_controls', action: args[1]});
+    })();
+  </action>
+
+  <action name="ca_hotspot" type="javascript">
+    (function(){
+      if(!window['sp']) { return; }
+      if(!window['sp']['dc']) { return; }
+      sp.dc.send('hotspot', {category: 'hotspot', action: args[1], label: args[2], values: {sceneId: krpano.get('xml.scene'), sceneName: krpano.get('scene[get(xml.scene)].title')}});
+    })();
+  </action>
+</krpano>

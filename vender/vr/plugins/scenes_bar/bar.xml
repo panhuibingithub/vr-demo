@@ -1,0 +1,9 @@
+<krpano>
+
+  <action name="toggle_scenes_bar">
+    if(plugin[scenes_bar].visible,
+      plugin[scenes_bar].hide(),
+      plugin[scenes_bar].show();
+    )
+  </action>
+</krpano>

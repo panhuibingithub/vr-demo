@@ -1,0 +1,8 @@
+<krpano>
+
+  <action name="load_mixcontent">
+    plugin[mixcontent].loadcontent(%1);
+    plugin[mixcontent].resetsounds();
+    set(plugin[mixcontent].visible, true);
+  </action>
+</krpano>

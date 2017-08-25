@@ -1,0 +1,24 @@
+<krpano>
+  <plugin name="sandtable" keep="true" url="../plugins/sandtable/sandtable.js"/>
+
+  <action name="load_sandtable">
+    plugin[sandtable].load(%1);
+  </action>
+
+  <action name="zoomin_sandtable">
+    plugin[sandtable].zoomin();
+  </action>
+
+  <action name="zoomout_sandtable">
+    plugin[sandtable].zoomout();
+  </action>
+
+  <action name="toggle_sandtable">
+    if(plugin[sandtable].visible,
+      set(plugin[sandtable].visible, false);
+      plugin[sandtable].zoomout();
+      ,
+      set(plugin[sandtable].visible, true);
+    );
+  </action>
+</krpano>

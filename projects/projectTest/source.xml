@@ -1,0 +1,253 @@
+<krpano version="1.19" title="万科五龙山璞院120㎡D2户型">
+	<include url="../../vender/vr/skin/skin.xml"></include>
+	<skin_settings icon_path="../../vender/vr/skin/img/" scenes_path="https://vr.ejudata.com/vender/vr/plugins/scenes_bar" audio_commentary="false" btn_link="true" link="openurl('http://house.leju.com/sc138179/')" btn_tel="true" tel="openurl('tel:4006108616,220702')" btn_location="false" scenes_bar="true" littleplanetintro="true" bgm="true" startup_tip="true" startup_tip_image="" pv_value="3553"></skin_settings>
+	<scene heading="" onstart="" lng="" name="scene_592e7a576106f9000f3f423e" havevrimage="true" title="客厅" thumburl="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e7a576106f9000f3f423e.tiles/thumb.jpg" lat="">
+		<view hlookat="17.732" vlookat="5.012" fovtype="MFOV" fov="133.64560023158137" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto"></view>
+		<preview url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e7a576106f9000f3f423e.tiles/preview.jpg"></preview>
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop">
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e7a576106f9000f3f423e.tiles/%s/l2/%v/l2_%s_%v_%h.jpg?1496218346778"></cube>
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e7a576106f9000f3f423e.tiles/%s/l1/%v/l1_%s_%v_%h.jpg?1496218346778"></cube>
+			</level>
+		</image>
+		<image if="webvr.isenabled OR !device.desktop">
+			<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e7a576106f9000f3f423e.tiles/vr/pano_%s.jpg"></cube>
+		</image>
+		<hotspot name="nadirlogo" ath="0" distorted="true" scale="1.75" rotate="0.0" rotatewithview="false" onclick="switch(rotatewithview); invalidatescreen();" keep="false" url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/image/581996f7b7afac000f010584.png" atv="90"></hotspot>
+		<hotspot name="hotspot_scene_592e7a576106f9000f3f423e_4019584" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/forward-3.png" ath="-60.117964100848155" atv="26.909696863254524" rotate="0" tooltip="阳台1" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e78173a2c8b0010389d6f, null, MERGE, BLEND(0.8));on_hotspot_clicked(阳台1, switch);"></hotspot>
+		<hotspot name="hotspot_scene_592e7a576106f9000f3f423e_8284065" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/circle.png" ath="79.42622545043662" atv="8.62997781342642" rotate="0" tooltip="餐厅" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e78173a2c8b0010389d67, null, MERGE, BLEND(0.8));on_hotspot_clicked(餐厅, switch);"></hotspot>
+		<hotspot name="hotspot_scene_592e7a576106f9000f3f423e_1938975" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/turn-left-6.png" ath="104.55171682549383" atv="1.7503566161062565" rotate="0" tooltip="厨房" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e78173a2c8b0010389d68, null, MERGE, BLEND(0.8));on_hotspot_clicked(厨房, switch);"></hotspot>
+		<hotspot name="hotspot_scene_592e7a576106f9000f3f423e_1500819" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/turn-right-6.png" ath="126.64559016186351" atv="12.969511383034552" rotate="0" tooltip="主卧" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e78173a2c8b0010389d70, null, MERGE, BLEND(0.8));on_hotspot_clicked(主卧, switch);"></hotspot>
+		<events name="nadirlogorotation" onviewchange="if(hotspot[nadirlogo].rotatewithview, set(hotspot[nadirlogo].rotate,get(view.hlookat)));"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+	</scene>
+	<scene heading="" onstart="" lng="" name="scene_592e78173a2c8b0010389d67" havevrimage="true" title="餐厅" thumburl="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d67.tiles/thumb.jpg" lat="">
+		<view hlookat="0.413" vlookat="8.950" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto"></view>
+		<preview url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d67.tiles/preview.jpg"></preview>
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop">
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d67.tiles/%s/l2/%v/l2_%s_%v_%h.jpg?1496218346779"></cube>
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d67.tiles/%s/l1/%v/l1_%s_%v_%h.jpg?1496218346779"></cube>
+			</level>
+		</image>
+		<image if="webvr.isenabled OR !device.desktop">
+			<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d67.tiles/vr/pano_%s.jpg"></cube>
+		</image>
+		<hotspot name="nadirlogo" ath="0" distorted="true" scale="1.75" rotate="0.0" rotatewithview="false" onclick="switch(rotatewithview); invalidatescreen();" keep="false" url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/image/581996f7b7afac000f010584.png" atv="90"></hotspot>
+		<hotspot name="hotspot_scene_592e78173a2c8b0010389d67_9698958" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/turn-left-6.png" ath="-76.52552453045001" atv="27.511194703078058" rotate="30.72469347079063" tooltip="客厅" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e7a576106f9000f3f423e, null, MERGE, BLEND(0.8));on_hotspot_clicked(客厅, switch);"></hotspot>
+		<hotspot name="hotspot_scene_592e78173a2c8b0010389d67_8082743" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/turn-left-6.png" ath="45.07321985815736" atv="6.9833841388473425" rotate="0" tooltip="厨房" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e78173a2c8b0010389d68, null, MERGE, BLEND(0.8));on_hotspot_clicked(厨房, switch);"></hotspot>
+		<hotspot name="hotspot_scene_592e78173a2c8b0010389d67_8762971" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/forward-3.png" ath="168.848" atv="10.24" rotate="0" tooltip="次卧" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e78173a2c8b0010389d6a, null, MERGE, BLEND(0.8));on_hotspot_clicked(次卧, switch);"></hotspot>
+		<hotspot name="hotspot_scene_592e78173a2c8b0010389d67_4882153" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/turn-right-6.png" ath="-175.68323311324406" atv="-1.796000839163245" rotate="0" tooltip="主卧" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e78173a2c8b0010389d70, null, MERGE, BLEND(0.8));on_hotspot_clicked(主卧, switch);"></hotspot>
+		<hotspot name="hotspot_scene_592e78173a2c8b0010389d67_6639586" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/turn-right-6.png" ath="-175.8807657357248" atv="10.445169927327914" rotate="0" tooltip="儿童房" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e78173a2c8b0010389d6b, null, MERGE, BLEND(0.8));on_hotspot_clicked(儿童房, switch);"></hotspot>
+		<hotspot name="hotspot_scene_592e78173a2c8b0010389d67_8712840" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/turn-right-6.png" ath="-173.5441277328156" atv="24.01872352782661" rotate="0" tooltip="储物间" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e78173a2c8b0010389d69, null, MERGE, BLEND(0.8));on_hotspot_clicked(储物间, switch);"></hotspot>
+		<events name="nadirlogorotation" onviewchange="if(hotspot[nadirlogo].rotatewithview, set(hotspot[nadirlogo].rotate,get(view.hlookat)));"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+	</scene>
+	<scene heading="" onstart="" lng="" name="scene_592e78173a2c8b0010389d6f" havevrimage="true" title="阳台1" thumburl="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d6f.tiles/thumb.jpg" lat="">
+		<view hlookat="79.55" vlookat="23.652" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto"></view>
+		<preview url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d6f.tiles/preview.jpg"></preview>
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop">
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d6f.tiles/%s/l2/%v/l2_%s_%v_%h.jpg?1496218346779"></cube>
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d6f.tiles/%s/l1/%v/l1_%s_%v_%h.jpg?1496218346779"></cube>
+			</level>
+		</image>
+		<image if="webvr.isenabled OR !device.desktop">
+			<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d6f.tiles/vr/pano_%s.jpg"></cube>
+		</image>
+		<hotspot name="nadirlogo" ath="0" distorted="true" scale="1.75" rotate="0.0" rotatewithview="false" onclick="switch(rotatewithview); invalidatescreen();" keep="false" url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/image/581996f7b7afac000f010584.png" atv="90"></hotspot>
+		<hotspot name="hotspot_scene_592e78173a2c8b0010389d6f_2111489" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/forward-3.png" ath="-80.42021947383193" atv="58.60545513585604" rotate="0" tooltip="客厅" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e7a576106f9000f3f423e, null, MERGE, BLEND(0.8));on_hotspot_clicked(客厅, switch);"></hotspot>
+		<hotspot name="hotspot_scene_592e78173a2c8b0010389d6f_5125709" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/turn-right-5.png" ath="161.17655709715115" atv="39.364826606241806" rotate="0" tooltip="阳台" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e78173a2c8b0010389d6e, null, MERGE, BLEND(0.8));on_hotspot_clicked(阳台, switch);"></hotspot>
+		<events name="nadirlogorotation" onviewchange="if(hotspot[nadirlogo].rotatewithview, set(hotspot[nadirlogo].rotate,get(view.hlookat)));"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+	</scene>
+	<scene heading="" onstart="" lng="" name="scene_592e78173a2c8b0010389d6e" havevrimage="true" title="阳台" thumburl="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d6e.tiles/thumb.jpg" lat="">
+		<view hlookat="13.269" vlookat="10.171" fovtype="MFOV" fov="140" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto"></view>
+		<preview url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d6e.tiles/preview.jpg"></preview>
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop">
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d6e.tiles/%s/l2/%v/l2_%s_%v_%h.jpg?1496218346779"></cube>
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d6e.tiles/%s/l1/%v/l1_%s_%v_%h.jpg?1496218346779"></cube>
+			</level>
+		</image>
+		<image if="webvr.isenabled OR !device.desktop">
+			<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d6e.tiles/vr/pano_%s.jpg"></cube>
+		</image>
+		<hotspot name="nadirlogo" ath="0" distorted="true" scale="1.75" rotate="0.0" rotatewithview="false" onclick="switch(rotatewithview); invalidatescreen();" keep="false" url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/image/581996f7b7afac000f010584.png" atv="90"></hotspot>
+		<hotspot name="hotspot_scene_592e78173a2c8b0010389d6e_3150754" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/forward-3.png" ath="7.248930531086444" atv="64.25322854264034" rotate="0" tooltip="阳台1" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e78173a2c8b0010389d6f, null, MERGE, BLEND(0.8));on_hotspot_clicked(阳台1, switch);"></hotspot>
+		<hotspot name="hotspot_scene_592e78173a2c8b0010389d6e_6220803" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/turn-left-6.png" ath="-9.010753789717683" atv="22.623754435625067" rotate="0" tooltip="客厅" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e7a576106f9000f3f423e, null, MERGE, BLEND(0.8));on_hotspot_clicked(客厅, switch);"></hotspot>
+		<events name="nadirlogorotation" onviewchange="if(hotspot[nadirlogo].rotatewithview, set(hotspot[nadirlogo].rotate,get(view.hlookat)));"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+	</scene>
+	<scene heading="" onstart="" lng="" name="scene_592e78173a2c8b0010389d70" havevrimage="true" title="主卧" thumburl="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d70.tiles/thumb.jpg" lat="">
+		<view hlookat="-178.38" vlookat="16.733" fovtype="MFOV" fov="140" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto"></view>
+		<preview url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d70.tiles/preview.jpg"></preview>
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop">
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d70.tiles/%s/l2/%v/l2_%s_%v_%h.jpg?1496218346779"></cube>
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d70.tiles/%s/l1/%v/l1_%s_%v_%h.jpg?1496218346779"></cube>
+			</level>
+		</image>
+		<image if="webvr.isenabled OR !device.desktop">
+			<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d70.tiles/vr/pano_%s.jpg"></cube>
+		</image>
+		<hotspot name="nadirlogo" ath="0" distorted="true" scale="1.75" rotate="0.0" rotatewithview="false" onclick="switch(rotatewithview); invalidatescreen();" keep="false" url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/image/581996f7b7afac000f010584.png" atv="90"></hotspot>
+		<hotspot name="hotspot_scene_592e78173a2c8b0010389d70_6193717" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/turn-left-6.png" ath="69.46969806329275" atv="13.598546801538072" rotate="0" tooltip="餐厅" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e78173a2c8b0010389d67, null, MERGE, BLEND(0.8));on_hotspot_clicked(餐厅, switch);"></hotspot>
+		<events name="nadirlogorotation" onviewchange="if(hotspot[nadirlogo].rotatewithview, set(hotspot[nadirlogo].rotate,get(view.hlookat)));"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+	</scene>
+	<scene heading="" onstart="" lng="" name="scene_592e78173a2c8b0010389d6a" havevrimage="true" title="次卧" thumburl="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d6a.tiles/thumb.jpg" lat="">
+		<view hlookat="-2.54" vlookat="7.553" fovtype="MFOV" fov="140" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto"></view>
+		<preview url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d6a.tiles/preview.jpg"></preview>
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop">
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d6a.tiles/%s/l2/%v/l2_%s_%v_%h.jpg?1496218346779"></cube>
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d6a.tiles/%s/l1/%v/l1_%s_%v_%h.jpg?1496218346779"></cube>
+			</level>
+		</image>
+		<image if="webvr.isenabled OR !device.desktop">
+			<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d6a.tiles/vr/pano_%s.jpg"></cube>
+		</image>
+		<hotspot name="nadirlogo" ath="0" distorted="true" scale="1.75" rotate="0.0" rotatewithview="false" onclick="switch(rotatewithview); invalidatescreen();" keep="false" url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/image/581996f7b7afac000f010584.png" atv="90"></hotspot>
+		<hotspot name="hotspot_scene_592e78173a2c8b0010389d6a_2713272" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/forward-3.png" ath="-106.44685644020268" atv="15.053463491137132" rotate="0" tooltip="餐厅" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e78173a2c8b0010389d67, null, MERGE, BLEND(0.8));on_hotspot_clicked(餐厅, switch);"></hotspot>
+		<hotspot name="hotspot_scene_592e78173a2c8b0010389d6a_4625746" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/turn-left-6.png" ath="-122.92210148029045" atv="23.09141350069438" rotate="0" tooltip="主卧" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e78173a2c8b0010389d70, null, MERGE, BLEND(0.8));on_hotspot_clicked(主卧, switch);"></hotspot>
+		<hotspot name="hotspot_scene_592e78173a2c8b0010389d6a_8311009" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/turn-right-6.png" ath="-103.06715322956023" atv="27.38586367456021" rotate="0" tooltip="卫浴" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e78173a2c8b0010389d6d, null, MERGE, BLEND(0.8));on_hotspot_clicked(卫浴, switch);"></hotspot>
+		<events name="nadirlogorotation" onviewchange="if(hotspot[nadirlogo].rotatewithview, set(hotspot[nadirlogo].rotate,get(view.hlookat)));"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+	</scene>
+	<scene heading="" onstart="" lng="" name="scene_592e78173a2c8b0010389d6b" havevrimage="true" title="儿童房" thumburl="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d6b.tiles/thumb.jpg" lat="">
+		<view hlookat="201.194" vlookat="11.557" fovtype="MFOV" fov="140" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto"></view>
+		<preview url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d6b.tiles/preview.jpg"></preview>
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop">
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d6b.tiles/%s/l2/%v/l2_%s_%v_%h.jpg?1496218346779"></cube>
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d6b.tiles/%s/l1/%v/l1_%s_%v_%h.jpg?1496218346779"></cube>
+			</level>
+		</image>
+		<image if="webvr.isenabled OR !device.desktop">
+			<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d6b.tiles/vr/pano_%s.jpg"></cube>
+		</image>
+		<hotspot name="nadirlogo" ath="0" distorted="true" scale="1.75" rotate="0.0" rotatewithview="false" onclick="switch(rotatewithview); invalidatescreen();" keep="false" url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/image/581996f7b7afac000f010584.png" atv="90"></hotspot>
+		<hotspot name="hotspot_scene_592e78173a2c8b0010389d6b_1466637" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/turn-left-6.png" ath="-89.47037114427013" atv="19.709817399859382" rotate="0" tooltip="储物间" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e78173a2c8b0010389d69, null, MERGE, BLEND(0.8));on_hotspot_clicked(储物间, switch);"></hotspot>
+		<hotspot name="hotspot_scene_592e78173a2c8b0010389d6b_10925967" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/turn-right-6.png" ath="-62.19841397656603" atv="20.034844994272564" rotate="0" tooltip="主卧" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e78173a2c8b0010389d70, null, MERGE, BLEND(0.8));on_hotspot_clicked(主卧, switch);"></hotspot>
+		<hotspot name="hotspot_scene_592e78173a2c8b0010389d6b_8738667" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/turn-left-6.png" ath="-88.62022869478517" atv="-3.4861220288170713" rotate="0" tooltip="餐厅" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e78173a2c8b0010389d67, null, MERGE, BLEND(0.8));on_hotspot_clicked(餐厅, switch);"></hotspot>
+		<events name="nadirlogorotation" onviewchange="if(hotspot[nadirlogo].rotatewithview, set(hotspot[nadirlogo].rotate,get(view.hlookat)));"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+	</scene>
+	<scene heading="" onstart="" lng="" name="scene_592e78173a2c8b0010389d69" havevrimage="true" title="储物间" thumburl="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d69.tiles/thumb.jpg" lat="">
+		<view hlookat="-156" vlookat="2.693" fovtype="MFOV" fov="140" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto"></view>
+		<preview url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d69.tiles/preview.jpg"></preview>
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop">
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d69.tiles/%s/l2/%v/l2_%s_%v_%h.jpg?1496218346779"></cube>
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d69.tiles/%s/l1/%v/l1_%s_%v_%h.jpg?1496218346779"></cube>
+			</level>
+		</image>
+		<image if="webvr.isenabled OR !device.desktop">
+			<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d69.tiles/vr/pano_%s.jpg"></cube>
+		</image>
+		<hotspot name="nadirlogo" ath="0" distorted="true" scale="1.75" rotate="0.0" rotatewithview="false" onclick="switch(rotatewithview); invalidatescreen();" keep="false" url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/image/581996f7b7afac000f010584.png" atv="90"></hotspot>
+		<hotspot name="hotspot_scene_592e78173a2c8b0010389d69_2079593" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/forward-3.png" ath="8.446333256201285" atv="21.764316114658836" rotate="0" tooltip="主卧" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e78173a2c8b0010389d70, null, MERGE, BLEND(0.8));on_hotspot_clicked(主卧, switch);"></hotspot>
+		<hotspot name="hotspot_scene_592e78173a2c8b0010389d69_2968275" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/turn-right-6.png" ath="26.514323566083533" atv="44.76903055761598" rotate="0" tooltip="儿童房" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e78173a2c8b0010389d6b, null, MERGE, BLEND(0.8));on_hotspot_clicked(儿童房, switch);"></hotspot>
+		<hotspot name="hotspot_scene_592e78173a2c8b0010389d69_2631509" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/turn-left-6.png" ath="-21.792443778411553" atv="40.73668391587997" rotate="0" tooltip="餐厅" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e78173a2c8b0010389d67, null, MERGE, BLEND(0.8));on_hotspot_clicked(餐厅, switch);"></hotspot>
+		<events name="nadirlogorotation" onviewchange="if(hotspot[nadirlogo].rotatewithview, set(hotspot[nadirlogo].rotate,get(view.hlookat)));"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+	</scene>
+	<scene heading="" onstart="" lng="" name="scene_592e78173a2c8b0010389d6d" havevrimage="true" title="卫浴" thumburl="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d6d.tiles/thumb.jpg" lat="">
+		<view hlookat="78.909" vlookat="4.849" fovtype="MFOV" fov="140" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto"></view>
+		<preview url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d6d.tiles/preview.jpg"></preview>
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop">
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d6d.tiles/%s/l2/%v/l2_%s_%v_%h.jpg?1496218346779"></cube>
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d6d.tiles/%s/l1/%v/l1_%s_%v_%h.jpg?1496218346779"></cube>
+			</level>
+		</image>
+		<image if="webvr.isenabled OR !device.desktop">
+			<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d6d.tiles/vr/pano_%s.jpg"></cube>
+		</image>
+		<hotspot name="nadirlogo" ath="0" distorted="true" scale="1.75" rotate="0.0" rotatewithview="false" onclick="switch(rotatewithview); invalidatescreen();" keep="false" url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/image/581996f7b7afac000f010584.png" atv="90"></hotspot>
+		<hotspot name="hotspot_scene_592e78173a2c8b0010389d6d_7279839" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/turn-right-6.png" ath="-7.255100070612457" atv="27.37679462796868" rotate="0" tooltip="餐厅" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e78173a2c8b0010389d67, null, MERGE, BLEND(0.8));on_hotspot_clicked(餐厅, switch);"></hotspot>
+		<hotspot name="hotspot_scene_592e78173a2c8b0010389d6d_6392699" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/turn-left-6.png" ath="-35.1938641980891" atv="25.224388494903412" rotate="0" tooltip="次卧" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e78173a2c8b0010389d6a, null, MERGE, BLEND(0.8));on_hotspot_clicked(次卧, switch);"></hotspot>
+		<hotspot name="hotspot_scene_592e78173a2c8b0010389d6d_9565213" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/turn-left-6.png" ath="-29.024697752275586" atv="6.207737033564273" rotate="0" tooltip="主卧" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e78173a2c8b0010389d70, null, MERGE, BLEND(0.8));on_hotspot_clicked(主卧, switch);"></hotspot>
+		<events name="nadirlogorotation" onviewchange="if(hotspot[nadirlogo].rotatewithview, set(hotspot[nadirlogo].rotate,get(view.hlookat)));"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+	</scene>
+	<scene heading="" onstart="" lng="" name="scene_592e78173a2c8b0010389d68" havevrimage="true" title="厨房" thumburl="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d68.tiles/thumb.jpg" lat="">
+		<view hlookat="205.741" vlookat="4.398" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto"></view>
+		<preview url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d68.tiles/preview.jpg"></preview>
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop">
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d68.tiles/%s/l2/%v/l2_%s_%v_%h.jpg?1496218346779"></cube>
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d68.tiles/%s/l1/%v/l1_%s_%v_%h.jpg?1496218346779"></cube>
+			</level>
+		</image>
+		<image if="webvr.isenabled OR !device.desktop">
+			<cube url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/panos/592e78173a2c8b0010389d68.tiles/vr/pano_%s.jpg"></cube>
+		</image>
+		<hotspot name="nadirlogo" ath="0" distorted="true" scale="1.75" rotate="0.0" rotatewithview="false" onclick="switch(rotatewithview); invalidatescreen();" keep="false" url="https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/image/581996f7b7afac000f010584.png" atv="90"></hotspot>
+		<hotspot name="hotspot_scene_592e78173a2c8b0010389d68_4033204" url="https://vr.ejudata.com/vender/vr/skin/img/hotspot/gif/turn-right-6.png" ath="-51.496795541735935" atv="33.262228359983666" rotate="0" tooltip="餐厅" scenelink="true" visible="true" distorted="false" scale="0.46875" width="128" height="128" onloaded="do_crop_animation(128, 128, 60);add_all_the_time_tooltip();" onclick="loadscene(scene_592e78173a2c8b0010389d67, null, MERGE, BLEND(0.8));on_hotspot_clicked(餐厅, switch);"></hotspot>
+		<events name="nadirlogorotation" onviewchange="if(hotspot[nadirlogo].rotatewithview, set(hotspot[nadirlogo].rotate,get(view.hlookat)));"></events>
+		<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+	</scene>
+	<action name="startup" autorun="onstart">if(startscene === null OR !scene[get(startscene)], copy(startscene,scene[0].name); );
+		loadscene(get(startscene), null, MERGE);
+		if(startactions !== null, startactions() );</action>
+	<data name="link">
+		<![CDATA[{"name":"","content":"http://house.leju.com/sc138179/"}]]>
+	</data>
+	<data name="tel">
+		<![CDATA[{"name":"","content":"4006108616,220702"}]]>
+	</data>
+	<data name="location">
+		<![CDATA[{"name":"","content":""}]]>
+	</data>
+	<data name="data_scenebar">
+		<![CDATA[[{"name":"scene_592e7a576106f9000f3f423e","title":"客厅"},{"name":"scene_592e78173a2c8b0010389d67","title":"餐厅"},{"name":"scene_592e78173a2c8b0010389d6f","title":"阳台1"},{"name":"scene_592e78173a2c8b0010389d6e","title":"阳台"},{"name":"scene_592e78173a2c8b0010389d70","title":"主卧"},{"name":"scene_592e78173a2c8b0010389d6a","title":"次卧"},{"name":"scene_592e78173a2c8b0010389d6b","title":"儿童房"},{"name":"scene_592e78173a2c8b0010389d69","title":"储物间"},{"name":"scene_592e78173a2c8b0010389d6d","title":"卫浴"},{"name":"scene_592e78173a2c8b0010389d68","title":"厨房"}]]]>
+	</data>
+	<data name="data_bgm">
+		<![CDATA[{"global":{"id":"bgm-global","name":"几米 - 拥有Masbfca (广告配乐完整版)修改.mp3","path":"https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/audio/58bd1caa687726000f750af8.mp3"},"scenes":{"scene_592e7a576106f9000f3f423e":{"id":"bgm-scene_592e7a576106f9000f3f423e","name":"几米 - 拥有Masbfca (广告配乐完整版)修改.mp3","path":"https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/audio/58bd1caa687726000f750af8.mp3"},"scene_592e78173a2c8b0010389d67":{"id":"bgm-scene_592e78173a2c8b0010389d67","name":"几米 - 拥有Masbfca (广告配乐完整版)修改.mp3","path":"https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/audio/58bd1caa687726000f750af8.mp3"},"scene_592e78173a2c8b0010389d6f":{"id":"bgm-scene_592e78173a2c8b0010389d6f","name":"几米 - 拥有Masbfca (广告配乐完整版)修改.mp3","path":"https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/audio/58bd1caa687726000f750af8.mp3"},"scene_592e78173a2c8b0010389d6e":{"id":"bgm-scene_592e78173a2c8b0010389d6e","name":"几米 - 拥有Masbfca (广告配乐完整版)修改.mp3","path":"https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/audio/58bd1caa687726000f750af8.mp3"},"scene_592e78173a2c8b0010389d70":{"id":"bgm-scene_592e78173a2c8b0010389d70","name":"几米 - 拥有Masbfca (广告配乐完整版)修改.mp3","path":"https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/audio/58bd1caa687726000f750af8.mp3"},"scene_592e78173a2c8b0010389d6a":{"id":"bgm-scene_592e78173a2c8b0010389d6a","name":"几米 - 拥有Masbfca (广告配乐完整版)修改.mp3","path":"https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/audio/58bd1caa687726000f750af8.mp3"},"scene_592e78173a2c8b0010389d6b":{"id":"bgm-scene_592e78173a2c8b0010389d6b","name":"几米 - 拥有Masbfca (广告配乐完整版)修改.mp3","path":"https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/audio/58bd1caa687726000f750af8.mp3"},"scene_592e78173a2c8b0010389d69":{"id":"bgm-scene_592e78173a2c8b0010389d69","name":"几米 - 拥有Masbfca (广告配乐完整版)修改.mp3","path":"https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/audio/58bd1caa687726000f750af8.mp3"},"scene_592e78173a2c8b0010389d6d":{"id":"bgm-scene_592e78173a2c8b0010389d6d","name":"几米 - 拥有Masbfca (广告配乐完整版)修改.mp3","path":"https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/audio/58bd1caa687726000f750af8.mp3"},"scene_592e78173a2c8b0010389d68":{"id":"bgm-scene_592e78173a2c8b0010389d68","name":"几米 - 拥有Masbfca (广告配乐完整版)修改.mp3","path":"https://vrcdn.ejudata.com/materials/57e871ad78e96f00957e518b/audio/58bd1caa687726000f750af8.mp3"}}}]]>
+	</data>
+	<data name="data_caption">
+		<![CDATA[{"logo":"","title":"","id":"","subTitle":"万科五龙山璞院120㎡D2户型VR实景看房"}]]>
+	</data>
+	<events name="nadirlogorotation" onviewchange="if(hotspot[nadirlogo].rotatewithview, set(hotspot[nadirlogo].rotate,get(view.hlookat)));"></events>
+	<events name="taobao" onnewpano="set(plugin[tbcontent].visible, false)"></events>
+</krpano>

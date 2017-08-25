@@ -1,0 +1,1213 @@
+<krpano onstart="showlog(false)" debugmode="false" showerrors="false">
+  <include url="../plugins/analyse/analyse.xml" />
+  <contextmenu fullscreen="false" versioninfo="false" native="false" touch="false" />
+  <skin_settings icon_path="./img/"
+                 scenes_bar="false"
+                 scenes_path="../plugins/scenes_bar"
+                 intro="false"
+                 intro_image=""
+                 intro_title=""
+                 intro_content=""
+                 intro_path="../plugins/intro"
+                 btn_link="false"
+                 link=""
+                 btn_tel="false"
+                 tel=""
+                 btn_location="false"
+                 location=""
+                 fullscreen="false"
+                 bgm="false"
+                 audio_commentary="false"
+                 logo_patch="false"
+                 auto_cruise="false"
+                 cruise_speed="0"
+                 sand_table="false"
+                 webvr="true"
+                 sandtable="false"
+                 sandtable_data=""
+                 littleplanetintro="false"
+                 gyro="true"
+                 gyro_autostart="false"
+                 share="true"
+                 startup_tip="false"
+                 startup_tip_image=""
+                 orga="false"
+                 pv="false"
+                 pv_value="0"
+                 release="true"
+                 />
+
+  <!-- hotspot tooltips style -->
+  <!--<style name="hotspotname"
+         keep="true"
+         url="../plugins/label/label.js"
+         alturl="../plugins/label/label.js"
+         type="tooltip"
+         align="centertop"
+         visible="false"
+         />-->
+
+  <style name="button"
+         url="../plugins/button/button.js"
+         alturl="../plugins/button/button.js"
+         keep="true" width="40" height="40"
+         align="lefttop" visible="false"
+         icon_path="calc:skin_settings.icon_path + 'button'"/>
+
+  <krpano stagescale="calc:stagescale * 2" if="stagescale LT 1.0"
+          devices="mobile"
+          showerrors="false"
+          debugmode="false" />
+
+  <action name="hide_ui">
+    set(showui, false);
+  </action>
+  <action name="show_ui">
+    set(showui, true);
+  </action>
+
+  <!-- startup_tip -->
+  <layer name="startup_tip_container" keep="true"
+         type="container"
+         onloaded="if(skin_settings.startup_tip, tween(alpha, 1));"
+         width="100%"
+         height="100%"
+         zorder="90"
+         visible="false"
+         alpha="0"
+         enabled="true">
+    <layer name="startup_tip_image" keep="true" type="image" align="center"
+           onloaded="if(device.mobile, set(scale, 0.5));"
+           onclick="startup_tip_close();"
+           endabled="true"
+           url="get:skin_settings.startup_tip_image"/>
+  </layer>
+  <action name="startup_tip_slideout">
+    if(skin_settings.startup_tip,
+      set(layer[startup_tip_container].visible,true);
+      set(layer[startup_tip_container].alpha, 0);
+      tween(layer[startup_tip_container].alpha, 1, 1);
+      for(set(i,0), i LT hotspot.count, inc(i),
+        if(hotspot[get(i)].name != 'nadirlogo',set(hotspot[get(i)].visible, false))
+      );
+      delayedcall(5,
+        if(layer[startup_tip_container].visible,
+          tween(layer[startup_tip_container].alpha, 0, 1, default,
+            set(layer[startup_tip_container].visible, false);
+            do_layout();
+          )
+        )
+      );
+    );
+  </action>
+  <action name="startup_tip_close">
+    tween(layer[startup_tip_container].alpha, 0, 1, default,
+      set(layer[startup_tip_container].visible, false);
+      do_layout();
+    );
+  </action>
+  <!-- startup_tip -->
+
+  <!-- intro -->
+  <include url="../plugins/intro/intro.xml" />
+  <plugin name="intro" keep="true"
+          url=""
+          plugin_url='../plugins/intro/intro.js'
+          title="get:skin_settings.intro_title"
+          content="get:skin_settings.intro_content"
+          image="get:skin_settings.intro_image"
+          location="get:skin_settings.intro_path"
+          visible="false"
+          />
+  <!-- intro -->
+
+  <!--location-->
+  <plugin name="location"
+        keep="true"
+        data="location"
+        title="导航"
+        url="../plugins/gaodmap/gdcontent.js"
+        icon_path="get:skin_settings.icon_path"
+        visible="false"
+        analyse="ca_toggle_location" />
+  <!--location-->
+
+  <action name="toggle_location">
+    if(plugin[location].visible,
+      plugin[location].hide();
+      plugin[btn_location].toggle(false);
+      ca_toggle_location(close);
+      ,
+      plugin[location].show();
+      plugin[btn_location].toggle(true);
+      ca_toggle_location(open);
+    )
+  </action>
+
+  <!-- loading text start-->
+  <events name="hideloading" keep="true"
+          onxmlcomplete="set(events[hideloading].onxmlcomplete,null);delayedcall(0.5, hideloading())"
+          />
+  <action name="hideloading">
+    js(sp.on('get(panoid)', 'onXmlComplete'));
+  </action>
+  <!-- loading text end-->
+
+  <!-- zoomage -->
+  <plugin name="zoomage"
+          url="../plugins/zoomage/index.js"
+          keep="true"
+          icon_path="get:skin_settings.icon_path"
+          visible="false"/>
+  <!-- zoomage -->
+
+
+
+  <include url="../plugins/scenes_bar/bar.xml" />
+  <plugin name="scenes_bar" keep="true"
+          url=""
+          mobile_url="../plugins/scenes_bar/bar_mobile.js"
+          pc_url="../plugins/scenes_bar/bar_mobile.js"
+          location="get:skin_settings.scenes_path"
+          visible="false"
+          onloaded=""
+          analyse="ca_loadscene|ca_toggle_scenebar"
+          />
+
+  <!-- VR support -->
+  <include url="../plugins/webvr/webvr.xml" devices="html5" />
+  <plugin name="WebVR" keep="true" devices="html5"
+	        pluginurl="../plugins/webvr/webvr.js"
+	        url="../plugins/webvr/webvr.js"
+	        multireslock.desktop="true"
+	        multireslock.mobile.or.tablet="false"
+	        mobilevr_support="true"
+	        mobilevr_fake_support="true"
+	        onavailable="removelayer(webvr_enterbutton); webvr_onavailable();"
+	        onentervr="skin_showloading(false); webvr_onentervr(); webvr_setup(); skin_reloadscene_webvr(); "
+	        onexitvr="webvr_onexitvr(); webvr_setup(); skin_reloadscene_webvr();"
+	        />
+
+  <action name="hide_hotsopt_onentervr">
+    if(webvr.isenabled,
+      for(set(i,0), i LT hotspot.count, inc(i),
+        if(hotspot[get(i)].scenelink == false,
+          set(hotspot[get(i)].visible, false);
+        );
+      );
+    );
+  </action>
+
+  <action name="show_hotsopt_onexitvr">
+    for(set(i,0), i LT hotspot.count, inc(i),
+      if(hotspot[get(i)].scenelink == false,
+        set(hotspot[get(i)].visible, true);
+      );
+    );
+
+    js(sp.on('get(panoid)', 'onExitVR'));
+  </action>
+
+  <action name="toggle_hotspot_vr">
+    if(plugin[btn_webvr].visible,
+      show_hotsopt_onexitvr();
+      ,
+      hide_hotsopt_onentervr();
+    );
+  </action>
+
+	<!-- webvr button style (adjust to match skin style) -->
+	<style name="webvr_button_style"
+	       border="false"
+	       roundedge="calc:1.0"
+	       backgroundcolor="get:skin_settings.design_bgcolor" backgroundalpha="get:skin_settings.design_bgalpha"
+	       shadow="0.01" shadowrange="10.0" shadowangle="90.0" shadowcolor="0x30261B" shadowalpha="0.50"
+	       css="calc:skin_settings.design_text_css + ' color:#FFFFFF;font-size:' + 20*webvr_setup_scale*webvr_button_scale + 'px;'"
+	       />
+
+	<!-- show a 'rotate the device' info when the mobile device is in portrait orientation in VR mode -->
+	<layer name="webvr_rotate_to_landscape_request" keep="true" vr="true" devices="mobile"
+	       url="rotate_device.png" scale="0.5"
+	       align="top" edge="center" y="28%"
+	       autoalpha="true" alpha="0.0"
+	       enabled="false"
+	       />
+
+	<events name="webvr_events" keep="true" devices="html5"
+	        onresize.mobile="webvr_act_as_gyro_in_portrait_mode();"
+          onnewpano="toggle_hotspot_vr();"
+	        />
+
+	<action name="webvr_setup">
+		if(webvr.isenabled,
+			copy(loadscene_flags_backup, skin_settings.loadscene_flags);
+			set(skin_settings.loadscene_flags, MERGE|KEEPVIEW|KEEPMOVING|NOPREVIEW);
+			webvr_act_as_gyro_in_portrait_mode(true);
+			if(scene.count GT 1,
+				set(hotspot[webvr_prev_scene].visible, true);
+				set(hotspot[webvr_next_scene].visible, true);
+				set(events[webvr_events].onviewchange, webvr_menu_following());
+			  );
+		  ,
+			if(loadscene_flags_backup !== null, copy(skin_settings.loadscene_flags, loadscene_flags_backup));
+			tween(layer[webvr_rotate_to_landscape_request].alpha, 0.0, 0.0);
+			set(hotspot[webvr_prev_scene].visible, false);
+			set(hotspot[webvr_next_scene].visible, false);
+			set(events[webvr_events].onviewchange, null);
+		  );
+	</action>
+
+	<action name="webvr_act_as_gyro_in_portrait_mode">
+		if(device.mobile AND webvr.isenabled,
+			div(aspect, stagewidth, stageheight);
+			if(aspect != lastaspect OR '%1' == 'true',
+				copy(lastaspect, aspect);
+				if(stagewidth GT stageheight,
+					<!-- landscape orientation - use stereo rendering and a direct/fast gyro sensor mode -->
+					set(display.stereo, true);
+					set(webvr.mobilevr_sensor_mode, 3);
+					webvr.update();
+					tween(layer[webvr_rotate_to_landscape_request].alpha, 0.0, 0.0);
+				  ,
+					<!-- portrait orientation - use normal rendering and a smoother/slower gyro sensor mode -->
+					set(display.stereo, false);
+					set(webvr.mobilevr_sensor_mode, 1);
+					webvr.update();
+					tween(layer[webvr_rotate_to_landscape_request].alpha, 1.0);
+					delayedcall(3.0, tween(layer[webvr_rotate_to_landscape_request].alpha, 0.0, 1.0); );
+				  );
+			  );
+		  ,
+			set(lastaspect, 0);
+		  );
+	</action>
+
+	<!-- VR scene switching hotspots -->
+	<style name="webvr_menu_style" depth="800" scale="0.5" distorted="true" ath="0" atv="45" alpha="0.5" />
+	<hotspot name="webvr_prev_scene" keep="true" style="webvr_menu_style" crop="0|64|64|64"  ox="-64" onover="tween(scale,0.6);" onout="tween(scale,0.5);" vr_timeout="750" onclick="skin_nextscene_loop(-1);" visible="false" devices="html5.and.webgl" />
+	<hotspot name="webvr_next_scene" keep="true" style="webvr_menu_style" crop="64|64|64|64" ox="+64" onover="tween(scale,0.6);" onout="tween(scale,0.5);" vr_timeout="750" onclick="skin_nextscene_loop(+1);" visible="false" devices="html5.and.webgl" />
+
+	<!-- floating/following VR hotspots -->
+	<action name="webvr_menu_following" type="Javascript" devices="html5"><![CDATA[
+		var hs1 = krpano.get("hotspot[webvr_prev_scene]");
+		var hs2 = krpano.get("hotspot[webvr_next_scene]");
+		if(!hs1.hovering && !hs2.hovering)
+		{
+			var f = 0.01;	// following speed factor
+			var h = krpano.view.hlookat;
+			var v = krpano.view.vlookat;
+			var hsh = hs1.ath;
+			var hsv = hs1.atv;
+			h   = (h  -(h|0))   + (((h|0)  +360180)%360) - 180.0;
+			v   = (v  -(v|0))   + (((v|0)  +360180)%360) - 180.0;
+			hsh = (hsh-(hsh|0)) + (((hsh|0)+360180)%360) - 180.0;
+			var dh = h - hsh;
+			dh += (dh > 180) ? -360 : (dh < -180) ? 360 : 0
+			hsh += dh*f;
+			var a = Math.abs(v - hsv) / 90.0;
+			a = 1.0 * Math.max(1.0 - 2.0*Math.sqrt(a), 0);
+			v = v + 55.0 - v*1.5;
+			hsv = hsv*(1.0 - f) + v*f;
+			hs1.ath = hs2.ath = hsh;
+			hs1.atv = hs2.atv = hsv;
+			hs1.alpha = hs2.alpha = a;
+		}
+	]]></action>
+
+  <!-- reload the scene when there is a special image for VR -->
+	<action name="skin_reloadscene_webvr">
+		delayedcall(0.1,
+			if(scene[get(xml.scene)].havevrimage,
+				loadscene(get(xml.scene), null, MERGE, BLEND(0.5));
+        toggle_hotspot_vr();
+			);
+		);
+	</action>
+	<!-- VR support -->
+
+  <!-- auto cruise -->
+  <autorotate enabled="calc:autocruise !== false" waittime="2.0" speed="get:skin_settings.cruise_speed" horizon="0.0" />
+
+  <events name="onautorotateevents" keep="true" onautorotateoneround="nextscene()" />
+
+  <action name="nextscene">
+    if(skin_settings.auto_cruise,
+      autorotate.stop();
+      wait(1);
+      set(ns, get(scene[get(xml.scene)].index));
+      set(maxs, get(scene.count));
+      add(ns,1);
+      if(ns == maxs, set(ns,0));
+      loadscene(get(scene[get(ns)].name), null, MERGE, BLEND(1.5));
+      autorotate.start();
+    );
+  </action>
+  <!-- auto cruise -->
+
+  <!-- bgm and audio commentary -->
+  <plugin name="soundinterface" url="../plugins/soundinterface.js" alturl="../plugins/soundinterface.js" keep="true"
+          plugin_url="../plugins/soundinterface.js"
+          plugin_alturl="../plugins/soundinterface.js" />
+
+  <plugin name="audiotool" url="" keep="true"
+          plugin_url="../plugins/audio/audio.js"
+          visible="false"
+          analyse="ca_toggle_audio" />
+
+  <action name="toggle_bgm">
+    plugin[audiotool].togglebgm();
+  </action>
+
+  <action name="toggle_audio_cmt">
+    plugin[audiotool].toggleaud();
+  </action>
+
+  <action name="playaudioonstart">
+    if(showui, plugin[audiotool].autoplay());
+  </action>
+
+  <events name="evt_audio" keep="true" onnewpano="playaudioonstart();" />
+
+  <!-- bgm and audio commentary -->
+
+  <!-- sand table -->
+  <include url="../plugins/sandtable/sandtable.xml" />
+  <plugin name="sandtable" keep="true"
+          url=""
+          plugin_url="../plugins/sandtable/sandtablemb.js"
+          mobile_url="../plugins/sandtable/sandtablemb.js"
+          content="get:skin_settings.sandtable_data"
+          icon_path="get:skin_settings.icon_path"
+          visible="false"
+          onloaded="check_sandtable()"
+          analyse="ca_loadscene|ca_toggle_sandtable"/>
+
+  <action name="check_sandtable">
+    plugin[sandtable].hassandtable(get(xml.scene));
+  </action>
+  <events name="evt_sandtable" keep="true" onnewpano="check_sandtable();" onviewchange="if(plugin[btn_sand_table].visible, rotateradar());"  onnewscene="clear_rotate();"/>
+  <action name="clear_rotate">
+    set(last_hlookat, get(xml.view.hlookat));
+    plugin[sandtable].clearrotate();
+  </action>
+  <action name="rotateradar">
+		if (!last_hlookat, set(last_hlookat, 0));
+		mod(hlookat, view.hlookat, 360);
+		if(hlookat != last_hlookat,
+			set(deltaarg, calc(hlookat - last_hlookat));
+			copy(last_hlookat, hlookat);
+			plugin[sandtable].rotateRadar('get(deltaarg)');
+		);
+	</action>
+  <!-- sand table -->
+
+  <!-- animate hotspot -->
+  <!--<events name="evt_animate_hotspot" keep="true" onviewchange="animate_hotspot();" />-->
+  <action name="animate_hotspot">
+    set(centerh, get(view.hlookat));
+    set(centerv, get(view.vlookat));
+		for(set(i,0), i LT hotspot.count, inc(i),
+      if(hotspot[get(i)].visible == true,
+        set(spoth, get(hotspot[get(i)].ath));
+        set(spotv, get(hotspot[get(i)].atv));
+        trace(get(i), ' ', get(centerh), ' ', get(centerv), ' ', get(spoth), ' ', get(spotv));
+  			set(absh, calc(centerh - spoth));
+        mod(absh, 360);
+        add(absh, 360);
+        mod(absh, 360);
+        sub(absh, 180);
+        Math.abs(absh);
+        sub(absh, 180, absh);
+  			set(absv, calc(centerv - spotv));
+        mod(absv, 360);
+        add(absv, 360);
+        mod(absv, 360);
+        sub(absv, 180);
+        Math.abs(absv);
+        sub(absv, 180, absv);
+        set(dis, calc(80 - absh - absv));
+        if(dis LT 0, set(dis, 0));
+        if(dis GT 80, set(dis, 80));
+        set(hotspot[get(hotspot[get(i)].name)].alpha, calc(dis/80.0));
+      );
+    );
+	</action>
+  <!-- animate hotspot -->
+
+  <!-- mix content -->
+  <include url="../plugins/mix/mixcontent.xml" />
+  <plugin name="mixcontent" keep="true"
+          url=""
+          plugin_url="../plugins/mix/mixmobile.js"
+          mobile_url="../plugins/mix/mixmobile.js"
+          icon_path="get:skin_settings.icon_path"
+          visible="false"
+          analyse="ca_hotspot"
+          />
+  <!-- mix content -->
+
+  <!-- taobao -->
+  <include url="../plugins/taobao/tbcontent.xml" />
+  <plugin name="tbcontent" keep="true"
+          url=""
+          plugin_url="../plugins/taobao/tbcontent.js"
+          mobile_url="../plugins/taobao/tbmobile.js"
+          icon_path="get:skin_settings.icon_path"
+          visible="false"
+          />
+  <!-- taobao -->
+
+  <!-- image slider -->
+  <include url="../plugins/image_slider/is.xml" />
+  <plugin name="imageslider" keep="true"
+          url=""
+          plugin_url="../plugins/image_slider/ism.js"
+          mobile_url="../plugins/image_slider/ism.js"
+          icon_path="get:skin_settings.icon_path"
+          visible="false"
+          analyse="ca_hotspot" />
+  <!-- image slider -->
+
+  <!-- hotspot text -->
+  <style name="icon_path" icon_path="get:skin_settings.icon_path" />
+  <action name="load_hstext">
+    txtadd(plugin[%1].parent, 'hotspot[', get(name), ']');
+    plugin[%1].loadtext(get(name));
+  </action>
+  <action name="toggle_hstext">
+    txtadd(parent_name, 'hotspot[', %2, ']');
+    if(plugin[%1].parent != get(parent_name),
+      txtadd(plugin[%1].parent, get(parent_name));
+      plugin[%1].loadtext(%2);
+    );
+    if(plugin[%1].visible,
+      plugin[%1].close();
+      ca_hotspot(close, text);
+      ,
+      plugin[%1].show();
+      ca_hotspot(open, text);
+    );
+  </action>
+  <!-- hotspot text -->
+
+  <!-- share -->
+  <plugin name="share" keep="true"
+          url=""
+          plugin_url="../plugins/share/share.js"
+          x="350"
+          y="440"
+          align="rightbottom"
+          icon_path="get:skin_settings.icon_path"
+          visible="false" />
+  <action name="toggle_share">
+    if(plugin[share].visible,
+      set(plugin[share].visible, false);,
+      set(plugin[share].visible, true);
+    );
+  </action>
+  <!-- share -->
+
+  <!-- gyro 陀螺仪 -->
+	<plugin name="skin_gyro" keep="true" url="" html5_url="../plugins/gyro2.js"
+          devices="html5" enabled="false" />
+  <!-- gyro 陀螺仪 -->
+
+  <events name="skin_events" keep="true"
+          onxmlcomplete="set(events[skin_events].onxmlcomplete,null); skin_startup(); playaudioonstart();"
+          onresize="stage_resize();"
+          />
+
+  <action name="do_layout">
+    if(skin_settings.intro,
+      copy(plugin[intro].url, plugin[intro].plugin_url);
+    );
+
+    if(skin_settings.fullscreen,
+      set(plugin[btn_fullscreen].visible, true);
+    );
+
+    if(skin_settings.bgm,
+      set(plugin[btn_bgm].visible, true);
+    );
+
+    if(skin_settings.audio_commentary,
+      set(plugin[btn_audio_cmt].visible, true);
+    );
+
+    if(skin_settings.webvr AND device.html5 AND device.webgl,
+      copy(plugin[WebVR].url, plugin[WebVR].pluginurl);
+    );
+
+    if(skin_settings.sandtable,
+      if(device.mobile,
+        copy(plugin[sandtable].url, plugin[sandtable].mobile_url);,
+        copy(plugin[sandtable].url, plugin[sandtable].plugin_url);
+      );
+    );
+
+    if(showui,
+      if(skin_settings.bgm OR skin_settings.audio_commentary,
+        copy(plugin[soundinterface].url, plugin[soundinterface].plugin_url);
+        copy(plugin[soundinterface].alturl, plugin[soundinterface].plugin_alturl);
+        copy(plugin[audiotool].url, plugin[audiotool].plugin_url);
+      );
+    );
+
+
+    if(device.mobile OR (stagewidth LT 1000), layout_mb(), layout_pc());
+
+    if(skin_settings.orga,
+      copy(plugin[caption].url, plugin[caption].plugin_url);
+      set(plugin[caption].visible, true);
+    );
+
+    if(device.mobile OR (stagewidth LT 1000),
+      copy(plugin[mixcontent].url, plugin[mixcontent].mobile_url);
+      copy(plugin[tbcontent].url, plugin[tbcontent].mobile_url);
+      copy(plugin[imageslider].url, plugin[imageslider].mobile_url);
+      copy(plugin[scenes_bar].url, plugin[scenes_bar].mobile_url);
+      ,
+      copy(plugin[mixcontent].url, plugin[mixcontent].plugin_url);
+      copy(plugin[tbcontent].url, plugin[tbcontent].plugin_url);
+      copy(plugin[imageslider].url, plugin[imageslider].plugin_url);
+      copy(plugin[scenes_bar].url, plugin[scenes_bar].pc_url);
+    );
+    if(skin_settings.scenes_bar AND showui, set(plugin[scenes_bar].visible, true));
+
+    set(is_show_hotspot_text, true);
+
+    for(set(i,0), i LT hotspot.count, inc(i),
+      set(hotspot[get(i)].visible,true);
+      set(hotspot[get(i)].alpha, 0);
+      tween(hotspot[get(hotspot[get(i)].name)].alpha, 1, 1);
+    );
+
+    for(set(i,0), i LT plugin.count, inc(i),
+      if (plugin[get(i)].ext,
+        set(plugin[get(i)].visible,true);
+        set(plugin[get(i)].alpha, 0);
+        tween(plugin[get(plugin[get(i)].name)].alpha, 1, 2);
+      );
+    );
+
+    set(hotspot[vr_cursor].visible, false);
+
+    if(showui,
+      set(plugin[btn_audio_cmt].alpha, 0);
+      set(plugin[btn_link].alpha, 0);
+      set(plugin[btn_tel].alpha, 0);
+      set(plugin[btn_location].alpha, 0);
+      set(plugin[btn_fullscreen].alpha, 0);
+      set(plugin[WebVR].alpha, 0);
+      set(plugin[btn_bgm].alpha, 0);
+      set(plugin[btn_sand_table].alpha, 0);
+      set(plugin[caption].alpha, 0);
+      set(plugin[scenes_bar].alpha, 0);
+      set(plugin[btn_scenes_bar].alpha, 0);
+      set(plugin[share].alpha, 0);
+      set(plugin[btn_share].alpha, 0);
+      set(plugin[btn_preview].alpha, 0);
+      set(plugin[btn_intro].alpha, 0);
+      tween(
+        plugin[btn_audio_cmt].alpha|
+        plugin[btn_link].alpha|
+        plugin[btn_tel].alpha|
+        plugin[btn_location].alpha|
+        plugin[btn_fullscreen].alpha|
+        plugin[btn_bgm].alpha|
+        plugin[WebVR].alpha|
+        plugin[btn_sand_table].alpha|
+        plugin[caption].alpha|
+        plugin[scenes_bar].alpha|
+        plugin[btn_scenes_bar].alpha|
+        plugin[share].alpha|
+        plugin[btn_share].alpha|
+        plugin[btn_preview].alpha|
+        plugin[btn_intro].alpha,
+        1, 2, default,
+        <!-- fix 切换场景时热点名称丢失的问题 -->
+        set(is_show_hotspot_text, true);
+      );
+    );
+
+    js(sp.on('get(panoid)', 'onLayout'));
+  </action>
+
+  <action name="skin_showloading">
+
+	</action>
+
+  <action name="stage_resize">
+
+  </action>
+
+  <action name="layout_pc">
+    def(btn_offset_tp, number, 30);
+    def(btn_offset_rt, number, 30);
+    def(btn_offset_bm, number, 30);
+    def(btn_offset_lt, number, 30);
+
+    set(plugin[scenes_bar].align, leftbottom);
+    set(plugin[scenes_bar].y, 0);
+    set(plugin[btn_scenes_bar].visible, true);
+    set(plugin[btn_scenes_bar].x, get(btn_offset_lt));
+    set(plugin[btn_scenes_bar].y, get(btn_offset_bm));
+    add(btn_offset_lt, 70);
+
+    if(skin_settings.intro,
+      set(plugin[btn_intro].visible, true);
+      set(plugin[btn_intro].x, get(btn_offset_lt));
+      set(plugin[btn_intro].y, get(btn_offset_bm));
+      add(btn_offset_lt, 70);
+    );
+
+    if(skin_settings.btn_link,
+      set(plugin[btn_link].visible, true);
+      set(plugin[btn_link].x, get(btn_offset_lt));
+      set(plugin[btn_link].y, get(btn_offset_bm));
+      add(btn_offset_lt, 70);
+    );
+
+    if(skin_settings.btn_tel,
+      set(plugin[btn_tel].visible, true);
+      set(plugin[btn_tel].x, get(btn_offset_lt));
+      set(plugin[btn_tel].y, get(btn_offset_bm));
+      add(btn_offset_lt, 70);
+    );
+
+    if(skin_settings.btn_location,
+      set(plugin[btn_location].visible, true);
+      set(plugin[btn_location].x, get(btn_offset_lt));
+      set(plugin[btn_location].y, get(btn_offset_bm));
+    );
+
+     <!-- right side -->
+    if(skin_settings.fullscreen,
+      set(plugin[btn_fullscreen].visible, true);
+      set(plugin[btn_fullscreen].y, get(btn_offset_tp));
+      set(plugin[btn_fullscreen].x, get(btn_offset_rt));
+      add(btn_offset_tp, 70);
+    );
+
+    if(skin_settings.bgm,
+      set(plugin[btn_bgm].visible, true);
+      set(plugin[btn_bgm].y, get(btn_offset_tp));
+      set(plugin[btn_bgm].x, get(btn_offset_rt));
+      add(btn_offset_tp, 70);
+    );
+
+    if(skin_settings.audio_commentary,
+      set(plugin[btn_audio_cmt].visible, true);
+      set(plugin[btn_audio_cmt].y, get(btn_offset_tp));
+      set(plugin[btn_audio_cmt].x, get(btn_offset_rt));
+      add(btn_offset_tp, 70);
+    );
+
+    if(skin_settings.sandtable,
+      set(plugin[btn_sand_table].visible, true);
+      set(plugin[btn_sand_table].y, get(btn_offset_tp));
+      set(plugin[btn_sand_table].x, get(btn_offset_rt));
+    );
+
+
+    if(skin_settings.share,
+      copy(plugin[share].url, plugin[share].plugin_url);
+      set(plugin[btn_share].visible, true);
+    );
+    jsget(ispreview, "preview");
+    if(ispreview,
+      set(plugin[btn_preview].visible, true);
+      set(plugin[btn_share].visible, false);
+    );
+
+
+    if(skin_settings.pv,
+      txtadd(txtpv, "浏览量：", get(skin_settings.pv_value));
+      set(plugin[label_pv].text, get(txtpv));
+      set(plugin[label_pv].visible, true);
+      set(plugin[label_pv].x, 30);
+      copy(plugin[label_pv].url, plugin[label_pv].plugin_url);
+      if(skin_settings.orga,
+        set(plugin[label_pv].y, 110);,
+        set(plugin[label_pv].y, 20);
+      );
+    );
+  </action>
+  <action name="layout_mb">
+    def(btn_offset_tp, number, 20);
+    def(btn_offset_rt, number, 9);
+    def(btn_offset_bm, number, 20);
+    def(btn_offset_lt, number, 9);
+
+
+    set(plugin[scenes_bar].align, leftbottom);
+    set(plugin[scenes_bar].y, 0);
+    set(plugin[btn_scenes_bar].visible, true);
+    set(plugin[btn_scenes_bar].x, get(btn_offset_lt));
+    set(plugin[btn_scenes_bar].y, get(btn_offset_bm));
+    add(btn_offset_lt, 60);
+
+
+    if(skin_settings.intro,
+      set(plugin[btn_intro].visible, true);
+      set(plugin[btn_intro].x, get(btn_offset_lt));
+      set(plugin[btn_intro].y, get(btn_offset_bm));
+      add(btn_offset_lt, 60);
+    );
+
+    if (skin_settings.btn_link,
+      set(plugin[btn_link].visible, true);
+      set(plugin[btn_link].x, get(btn_offset_lt));
+      set(plugin[btn_link].y, get(btn_offset_bm));
+      add(btn_offset_lt, 60);
+    );
+
+
+    if (skin_settings.btn_tel,
+      set(plugin[btn_tel].visible, true);
+      set(plugin[btn_tel].x, get(btn_offset_lt));
+      set(plugin[btn_tel].y, get(btn_offset_bm));
+      add(btn_offset_lt, 60);
+    );
+
+    if (skin_settings.btn_location,
+      set(plugin[btn_location].visible, true);
+      set(plugin[btn_location].x, get(btn_offset_lt));
+      set(plugin[btn_location].y, get(btn_offset_bm));
+    );
+
+    if(skin_settings.sandtable,
+      set(plugin[btn_sand_table].visible, true);
+      set(plugin[btn_sand_table].align, righttop);
+      set(plugin[btn_sand_table].y, get(btn_offset_tp));
+      set(plugin[btn_sand_table].x, get(btn_offset_rt));
+      add(btn_offset_tp, 60);
+    );
+
+    if(skin_settings.bgm,
+      set(plugin[btn_bgm].visible, true);
+      set(plugin[btn_bgm].y, get(btn_offset_tp));
+      set(plugin[btn_bgm].x, get(btn_offset_rt));
+      add(btn_offset_tp, 60);
+    );
+
+    if(skin_settings.audio_commentary,
+      set(plugin[btn_audio_cmt].visible, true);
+      set(plugin[btn_audio_cmt].y, get(btn_offset_tp));
+      set(plugin[btn_audio_cmt].x, get(btn_offset_rt));
+      add(btn_offset_tp, 60);
+    );
+
+    if(skin_settings.webvr AND device.html5 AND device.webgl,
+      set(plugin[btn_webvr].visible, true);
+      set(plugin[btn_webvr].y, get(btn_offset_tp));
+      set(plugin[btn_webvr].x, get(btn_offset_rt));
+      add(btn_offset_tp, 60);
+    );
+
+    if(skin_settings.gyro AND device.html5 AND device.webgl,
+      set(plugin[btn_gyro].visible, true);
+      set(plugin[btn_gyro].y, get(btn_offset_tp));
+      set(plugin[btn_gyro].x, get(btn_offset_rt));
+    );
+
+    if(skin_settings.gyro,
+      copy(plugin[skin_gyro].url, plugin[skin_gyro].html5_url);
+
+      if(skin_settings.gyro_autostart,
+        delayedcall(1,
+          set(plugin[skin_gyro].enabled, true);
+          plugin[btn_gyro].togglew(true);
+        );
+      );
+    );
+
+    if(skin_settings.pv,
+      txtadd(txtpv, "浏览量：", get(skin_settings.pv_value));
+      set(plugin[label_pv].text, get(txtpv));
+      set(plugin[label_pv].visible, true);
+      set(plugin[label_pv].x, 9);
+      copy(plugin[label_pv].url, plugin[label_pv].plugin_url);
+      if(skin_settings.orga,
+        set(plugin[label_pv].y, 65);,
+        set(plugin[label_pv].y, 20);
+      );
+    );
+
+    if(skin_settings.orga,
+      set(plugin[caption].x, 9);
+      set(plugin[caption].y, 20);
+    );
+  </action>
+  <!-- container left -->
+  <layer type="container" keep="true"
+         name="docker_left"
+         x="0" y="0"
+         width="100" height="100%"
+         align="lefttop"
+         visible="get:showui">
+   <!-- pv -->
+   <plugin name="label_pv" keep="true"
+           url=""
+           plugin_url="../plugins/label/label.js"
+           align="lefttop"
+           x="30"
+           y="90"
+           visible="false" />
+   <!-- pv -->
+
+   <!-- caption -->
+   <plugin name="caption" keep="true"
+           url=""
+           plugin_url="../plugins/caption/caption.js"
+           align="lefttop"
+           x="30"
+           y="30"
+           visible="false"/>
+   <!-- caption -->
+  </layer>
+  <!-- container bottom -->
+  <layer type="container" keep="true"
+         name="docker_bottom"
+         y="0" x="0"
+         width="100%" height="100"
+         align="leftbottom"
+         visible="get:showui">
+    <plugin name="btn_scenes_bar" style="button" title="全景选择"
+            icon="scenes-bar"
+            x="30"
+            y="30"
+            align="leftbottom"
+            visible="false"
+            onclick="toggle_scenes_bar();"
+            onloaded="if(skin_settings.scenes_bar, plugin[btn_scenes_bar].togglew(true), plugin[btn_scenes_bar].togglew(false));"
+            />
+    <plugin name="btn_intro" style="button" title="简介"
+            icon="intro"
+            x="100"
+            y="30"
+            align="leftbottom"
+            visible="false"
+            onclick="toggle_intro();"
+            />
+
+    <plugin name="btn_link"
+            style="button"
+            title= "链接"
+            icon="link"
+            nopress="true"
+            x="170"
+            y="30"
+            align="leftbottom"
+            visible="false"
+            onclick="get:skin_settings.link"/>
+
+
+    <plugin name="btn_tel"
+        style= "button"
+        title= "电话"
+        icon= "tel"
+        nopress= "true"
+        x= "170"
+        y= "30"
+        align= "leftbottom"
+        visible= "false"
+        onclick="get:skin_settings.tel">
+    </plugin>
+
+    <plugin name="btn_location"
+        style= "button"
+        title= "地址"
+        icon= "location"
+        nopress= "true"
+        x= "170"
+        y= "30"
+        align= "leftbottom"
+        visible= "false"
+        onClick="toggle_location();">
+    </plugin>
+
+    <plugin name="btn_share" style="button" title="分享"
+            icon="share"
+            x="30"
+            y="30"
+            align="rightbottom"
+            visible="false"
+            onclick="toggle_share();"
+            />
+    <plugin name="btn_preview" style="button" title="预览"
+            icon="preview-mobile"
+            x="30"
+            y="30"
+            align="rightbottom"
+            visible="false"
+            onclick="toggle_share();"
+            />
+
+    <plugin name="btn_pv" style="button" title=""
+            icon="pv"
+            align="rightbottom"
+            x="100"
+            y="30"
+            visible="false"/>
+  </layer>
+  <!-- container right -->
+  <layer type="container" keep="true"
+         name="docker_right"
+         y="0" x="0"
+         width="100" height="100%"
+         align="righttop"
+         visible="get:showui">
+    <plugin name="btn_fullscreen" style="button" title="全屏"
+            icon="fullscreen"
+            x="30"
+            y="30"
+            align="righttop"
+            visible="false"
+            onclick="toggle_fullscreen();"
+            />
+
+    <plugin name="btn_bgm" style="button" title="背景音乐"
+            icon="bgm"
+            x="30"
+            y="100"
+            align="righttop"
+            visible="false"
+            onclick="toggle_bgm();"
+            />
+
+    <plugin name="btn_audio_cmt" style="button" title="语音解说"
+            icon="audio-cmt"
+            x="30"
+            y="170"
+            align="righttop"
+            visible="false"
+            onclick="toggle_audio_cmt();"
+            />
+
+    <plugin name="btn_webvr" style="button" title="VR模式"
+            icon="webvr"
+            x="30"
+            y="240"
+            align="righttop"
+            onclick="webvr.enterVR();ca_toggle_webvr();"
+            visible="false"
+            />
+
+    <plugin name="btn_gyro" style="button" title="手机陀螺仪"
+            icon="gyro"
+            x="30"
+            y="310"
+            align="righttop"
+            onclick="switch(plugin[skin_gyro].enabled);ca_toggle_gyro();"
+            visible="false"
+            />
+
+    <plugin name="btn_sand_table" style="button" title="沙盘"
+            icon="sand-table"
+            x="30"
+            y="380"
+            align="righttop"
+            visible="false"
+            onclick="toggle_sandtable();load_sandtable(get(xml.scene));ca_toggle_sandtable();"
+            />
+  </layer>
+  <!-- global buttons -->
+  <!--nopress属性主要是用于设置鼠标不切换样式-->
+  <!-- global buttons end -->
+
+   <!-- 文字热点效果 -->
+
+  <!-- skin_hotspotstyle - style for the hotspots -->
+  <style name="skin_hotspotstyle" url="./img/vtourskin_hotspot.png" scale="0.5" edge="top" oy="0" distorted="false"
+	       tooltip="" visible="false"
+	       onclick="if(linkedscene, skin_hidetooltips(); tween(scale,0.25,0.5); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,get(skin_settings.loadscene_flags),get(skin_settings.loadscene_blend)); skin_updatescroll(); );"
+	       onloaded=""
+	       />
+
+
+  <action name="add_all_the_time_tooltip">
+    txtadd(tooltipwrapname, 'tooltip_wrap_', get(name));
+    addhotspot(get(tooltipwrapname));
+    <!-- 不设置url hotspot无法显示 -->
+    txtadd(tooltipimgurl, get(host), 'vender/vr/skin/img/hotspot/hotspot_null.png');
+    set(hotspot[get(tooltipwrapname)].type, image);
+    set(hotspot[get(tooltipwrapname)].url, get(tooltipimgurl));
+    set(hotspot[get(tooltipwrapname)].ath, get(hotspot[get(name)].ath));
+    set(hotspot[get(tooltipwrapname)].atv, get(hotspot[get(name)].atv));
+    set(hotspot[get(tooltipwrapname)].distorted, false);
+    set(hotspot[get(tooltipwrapname)].enabled, true);
+    set(hotspot[get(tooltipwrapname)].handcursor, true);
+    set(hotspot[get(tooltipwrapname)].width, 128);
+    set(hotspot[get(tooltipwrapname)].height, 128);
+    set(hotspot[get(tooltipwrapname)].scale, get(hotspot[get(name)].scale));
+    txtadd(hotspot[get(tooltipwrapname)].onclick, 'callwith(', 'hotspot[', get(name), '], onclick)');
+
+
+    if (is_show_hotspot_text,
+       set(hotspot[get(tooltipwrapname)].visible, true),
+       set(hotspot[get(tooltipwrapname)].visible, false);
+    );
+
+    txtadd(tooltipname, 'tooltip_', get(name));
+    txtadd(labelurl, get(host), 'vender/vr/plugins/label/label.js');
+    <!-- set(labelurl, 'vender/vr/plugins/label/label.js'); -->
+    addplugin(get(tooltipname));
+    txtadd(plugin[get(tooltipname)].parent, 'hotspot[', get(tooltipwrapname), ']');
+    set(plugin[get(tooltipname)].url, get(labelurl));
+    set(plugin[get(tooltipname)].usefor, 'tooltip');
+    set(plugin[get(tooltipname)].text, get(hotspot[get(name)].tooltip));
+    set(plugin[get(tooltipname)].visible, true);
+    set(plugin[get(tooltipname)].align, top);
+    set(plugin[get(tooltipname)].edge, bottom);
+    set(plugin[get(tooltipname)].hst, true);
+    set(plugin[get(tooltipname)].y, 0);
+    set(plugin[get(tooltipname)].enabled, true);
+    txtadd(plugin[get(tooltipname)].onloaded, 'requireskincss(plugin[', get(tooltipname), '].resetposition())');
+    txtadd(plugin[get(tooltipname)].onclick, 'callwith(', 'hotspot[', get(name), '], onclick)');
+
+    if(hotspot[get(name)].tooltip,
+       set(plugin[get(tooltipname)].visible, true),
+       set(plugin[get(tooltipname)].visible, false);
+    );
+  </action>
+
+  <!-- 文字热点效果 end -->
+
+  <!-- hotspot image animation -->
+  <action name="do_crop_animation">
+		<!-- 为热点注册属性 -->
+		registerattribute(xframes, calc((imagewidth / %1) BOR 0));
+		registerattribute(yframes, calc((imageheight / %2) BOR 0));
+		registerattribute(frames, calc(xframes * yframes));
+		registerattribute(frame, 0);
+
+		set(crop, '0|0|%1|%2');
+
+		setinterval(calc('crop_anim_' + name), calc(1.0 / %3),
+			if(loaded,
+				inc(frame);
+				if(frame GE frames, if(onlastframe !== null, onlastframe() ); set(frame,0); );
+				mod(xpos, frame, xframes);
+				div(ypos, frame, xframes);
+				Math.floor(ypos);
+				mul(xpos, %1);
+				mul(ypos, %2);
+				calc(crop, xpos + '|' + ypos + '|%1|%2');
+			,
+				clearinterval(calc('crop_anim_' + name));
+			);
+		);
+	</action>
+  <!-- hotspot image animation -->
+
+  <action name="toggle_fullscreen">
+    toggle(fullscreen);
+  </action>
+
+
+  <action name="skin_startup">
+    if(showui === null,
+      set(showui, true);
+      set(layer[docker_left].visible, true);
+      set(layer[docker_bottom].visible, true);
+      set(layer[docker_right].visible, true);
+    );
+
+    if(startscene !== null, loadscene(get(startscene)); );
+    ifnot(start_fov === null, copy(view.fov, start_fov); );
+    ifnot(start_hlookat === null, copy(view.hlookat, start_hlookat); );
+    ifnot(start_vlookat === null, copy(view.vlookat, start_vlookat); );
+    <!-- 设置是否要显示热点文字的开关变量 -->
+    if ((skin_settings.littleplanetintro OR (skin_settings.startup_tip AND layer[startup_tip_image].url)),
+      def(is_show_hotspot_text, boolean, false),
+      def(is_show_hotspot_text, boolean, true);
+    );
+
+    <!-- 判断是否有小行星开场 -->
+    if(skin_settings.littleplanetintro AND (device.webgl OR device.flash),
+      skin_setup_littleplanetintro(),
+      <!-- 判断是否有开场提示 -->
+      <!-- 新项目默认开场提示也是打开的，只是url为空，所以用url来判断是否真的有开场提示 -->
+      if(skin_settings.startup_tip AND layer[startup_tip_image].url,
+        requireskincss(startup_tip_slideout),
+        <!-- 既没有小行星也没有开场提示 -->
+        requireskincss(do_layout);
+      );
+    );
+  </action>
+
+  <action name="show_after_littleplanetintro">
+    if(skin_settings.startup_tip  AND layer[startup_tip_image].url,
+      startup_tip_slideout(),
+      do_layout()
+    );
+  </action>
+
+  <action name="skin_setup_littleplanetintro">
+    for(set(i,0), i LT hotspot.count, inc(i),
+      if(hotspot[get(i)].name != 'nadirlogo',set(hotspot[get(i)].visible, false))
+    );
+		copy(lp_scene, xml.scene);
+		copy(lp_hlookat, view.hlookat);
+		copy(lp_vlookat, view.vlookat);
+		copy(lp_fov, view.fov);
+		copy(lp_fovmax, view.fovmax);
+		copy(lp_limitview, view.limitview);
+		set(view.fovmax, 170);
+		set(view.limitview, lookto);
+		set(view.vlookatmin, 90);
+		set(view.vlookatmax, 90);
+		lookat(calc(lp_hlookat - 180), 90, 150, 1, 0, 0);
+
+    set(events[lp_events].onloadcomplete, requireskincss(play_littleplanetintro));
+    <!-- load skin.css here -->
+	</action>
+
+  <action name="play_littleplanetintro">
+  	delayedcall(0.5,
+  		if(lp_scene === xml.scene,
+  			set(control.usercontrol, off);
+  			copy(view.limitview, lp_limitview);
+  			set(view.vlookatmin, null);
+  			set(view.vlookatmax, null);
+  			tween(view.hlookat|view.vlookat|view.fov|view.distortion, calc('' + lp_hlookat + '|' + lp_vlookat + '|' + lp_fov + '|' + 0.0),
+  				3.0, easeOutQuad,
+  				set(control.usercontrol, all);
+  				tween(view.fovmax, get(lp_fovmax), 0.5, default, show_after_littleplanetintro());
+				);
+		  );
+	  );
+  </action>
+
+  <!-- listener -->
+  <action name="on_play">
+    js(sp.on('get(panoid)', 'onPlay'));
+  </action>
+
+  <action name="on_scene_loaded">
+    js(sp.on('get(panoid)', 'onSceneLoaded', 'get(scene[get(xml.scene)].title)'));
+  </action>
+
+  <action name="on_hotspot_clicked">
+    js(sp.on('get(panoid)', 'onHotspotClicked', '%1', 'get(scene[get(xml.scene)].title)', '%2'));
+  </action>
+
+  <events name="player_on_play" onxmlcomplete="set(events[player_on_play].onxmlcomplete,null);on_play();" keep="true" />
+  <events name="player_listener" keep="true"
+          onnewscene="on_scene_loaded()"
+          />
+  <!-- listener -->
+
+  <action name="requireskincss">
+    set(skincss, '');
+    set(krpanoid, '');
+    set(callback, '');
+
+    txtadd(skincss, get(host), 'vender/vr/style/default/skin.css');
+    txtadd(krpanoid, 'krpanoObject', get(panoid));
+    txtadd(callback, %1);
+
+    jscall(calc('loadjs("' + skincss + '", { success: function(){ document.getElementById("' + krpanoid + '").call("' + callback + '()"); } })'));
+  </action>
+</krpano>
